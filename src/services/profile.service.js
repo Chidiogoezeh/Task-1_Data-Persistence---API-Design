@@ -1,6 +1,6 @@
-import * as externalService from './external.service.js';
-import * as profileModel from '../models/profile.model.js';
-import { generateUUID } from '../utils/uuid.util.js';
+import * as externalService from "./external.service.js";
+import * as profileModel from "../models/profile.model.js";
+import { generateUUID } from "../utils/uuid.util.js";
 
 export const createProfile = async (name) => {
   // Check Idempotency
@@ -11,7 +11,7 @@ export const createProfile = async (name) => {
   const [genderData, ageData, nationalData] = await Promise.all([
     externalService.fetchGenderData(name),
     externalService.fetchAgeData(name),
-    externalService.fetchNationalData(name)
+    externalService.fetchNationalData(name),
   ]);
 
   const profileData = {
@@ -20,7 +20,7 @@ export const createProfile = async (name) => {
     ...genderData,
     ...ageData,
     ...nationalData,
-    created_at: new Date().toISOString()
+    created_at: new Date().toISOString(),
   };
 
   await profileModel.save(profileData);

@@ -1,4 +1,4 @@
-import { errorResponse } from '../utils/response.util.js';
+import { errorResponse } from "../utils/response.util.js";
 
 export const validateProfileInput = (req, res, next) => {
   const { name } = req.body;
@@ -7,7 +7,7 @@ export const validateProfileInput = (req, res, next) => {
     return errorResponse(res, "Missing or empty name", 400);
   }
 
-  if (typeof name !== 'string') {
+  if (typeof name !== "string") {
     return errorResponse(res, "Invalid type", 422);
   }
 

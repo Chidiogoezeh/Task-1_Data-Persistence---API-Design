@@ -1,4 +1,4 @@
-import { errorResponse } from '../utils/response.util.js';
+import { errorResponse } from "../utils/response.util.js";
 
 export const globalErrorHandler = (err, req, res, next) => {
   console.error(err);

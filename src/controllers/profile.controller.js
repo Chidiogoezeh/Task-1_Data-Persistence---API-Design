@@ -1,13 +1,15 @@
-import * as profileService from '../services/profile.service.js';
-import { successResponse, errorResponse } from '../utils/response.util.js';
+import * as profileService from "../services/profile.service.js";
+import { successResponse, errorResponse } from "../utils/response.util.js";
 
 export const postProfile = async (req, res, next) => {
   try {
     const { name } = req.body;
     const { data, isNew } = await profileService.createProfile(name);
-    
+
     if (!isNew) {
-      return successResponse(res, data, 200, { message: "Profile already exists" });
+      return successResponse(res, data, 200, {
+        message: "Profile already exists",
+      });
     }
     return successResponse(res, data, 201);
   } catch (error) {
