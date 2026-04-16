@@ -16,7 +16,8 @@ export const findById = async (id) => {
 
 export const save = async (p) => {
   const sql = `INSERT INTO profiles (id, name, gender, gender_probability, sample_size, age, age_group, country_id, country_probability, created_at) 
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`;
+  
   const params = [
     p.id,
     p.name,
@@ -26,8 +27,8 @@ export const save = async (p) => {
     p.age,
     p.age_group,
     p.country_id,
-    p.country_probability,
-    p.created_at,
+    p.country_probability
+    // Removed p.created_at from here
   ];
   return await pool.execute(sql, params);
 };

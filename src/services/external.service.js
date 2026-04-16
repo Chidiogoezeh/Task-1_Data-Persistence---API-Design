@@ -23,9 +23,9 @@ export const fetchAgeData = async (name) => {
 
   let age_group;
   const age = res.data.age;
-  if (age >= 0 && age <= 12) age_group = "child";
-  else if (age >= 13 && age <= 19) age_group = "teenager";
-  else if (age >= 20 && age <= 59) age_group = "adult";
+  if (age <= 12) age_group = "child";
+  else if (age <= 19) age_group = "teenager";
+  else if (age <= 59) age_group = "adult";
   else age_group = "senior";
 
   return { age: res.data.age, age_group };
